@@ -77,8 +77,13 @@ export default function DashboardPage() {
       ]);
 
       // Extract data from successful responses
-      const [plansResult, completedResult, completedCountResult, matchesResult, reviewableResult] =
-        results;
+      const [
+        plansResult,
+        completedResult,
+        completedCountResult,
+        matchesResult,
+        reviewableResult,
+      ] = results;
 
       if (plansResult.status === "fulfilled") {
         setUpcomingPlans((plansResult.value as ApiResponse<TravelPlan[]>).data);
@@ -212,9 +217,7 @@ export default function DashboardPage() {
               <CheckCircle className='w-4 h-4 text-green-500' />
             </CardHeader>
             <CardContent>
-              <div className='text-2xl font-bold'>
-                {completedCount}
-              </div>
+              <div className='text-2xl font-bold'>{completedCount}</div>
             </CardContent>
           </Card>
 
