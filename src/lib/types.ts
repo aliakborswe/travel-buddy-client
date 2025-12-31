@@ -11,6 +11,7 @@ export interface User {
   isPremium: boolean;
   isVerified: boolean;
   subscriptionEndDate?: string;
+  completedTripsCount: number;
   createdAt: string;
   updatedAt: string;
 }
@@ -34,6 +35,7 @@ export interface TravelPlan {
   itinerary?: string;
   maxTravelers?: number;
   currentTravelers: string[];
+  joinedUser: string[];
   interests: string[];
   status: "planning" | "active" | "completed" | "cancelled";
   createdAt: string;

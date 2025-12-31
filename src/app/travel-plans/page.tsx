@@ -46,7 +46,7 @@ export default function TravelPlansPage() {
   const fetchPlans = async () => {
     try {
       const response: ApiResponse<TravelPlan[]> = await apiClient.get(
-        `${API_ENDPOINTS.TRAVEL_PLANS.ALL}?userId=${currentUser?._id}`,
+        `${API_ENDPOINTS.TRAVEL_PLANS.ALL}?userId=${currentUser?._id}&joinedUserId=${currentUser?._id}`,
         accessToken || undefined
       );
       setPlans(response.data);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { apiClient } from "@/lib/api-client";
 import { API_ENDPOINTS } from "@/lib/constants";
@@ -46,28 +46,24 @@ export default function DashboardPage() {
   const accessToken = useAppSelector((state) => state.auth.accessToken);
   const [upcomingPlans, setUpcomingPlans] = useState<TravelPlan[]>([]);
   const [completedPlans, setCompletedPlans] = useState<TravelPlan[]>([]);
+  const [completedCount, setCompletedCount] = useState(0);
   const [reviewablePlans, setReviewablePlans] = useState<ReviewablePlan[]>([]);
   const [suggestedMatches, setSuggestedMatches] = useState<MatchResult[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (!currentUser) {
-      router.push("/login");
-      return;
-    }
-
-    fetchDashboardData();
-  }, [currentUser, router]);
-
-  const fetchDashboardData = async () => {
+  const fetchDashboardData = useCallback(async () => {
     try {
       const results = await Promise.allSettled([
         apiClient.get(
-          `${API_ENDPOINTS.TRAVEL_PLANS.ALL}?userId=${currentUser?._id}&status=planning,active`,
+          `${API_ENDPOINTS.TRAVEL_PLANS.ALL}?userId=${currentUser?._id}&joinedUserId=${currentUser?._id}&status=planning,active`,
           accessToken || undefined
         ),
         apiClient.get(
-          `${API_ENDPOINTS.TRAVEL_PLANS.ALL}?userId=${currentUser?._id}&status=completed&limit=5`,
+          `${API_ENDPOINTS.TRAVEL_PLANS.ALL}?userId=${currentUser?._id}&joinedUserId=${currentUser?._id}&status=completed&limit=5`,
+          accessToken || undefined
+        ),
+        apiClient.get(
+          `${API_ENDPOINTS.TRAVEL_PLANS.ALL}?userId=${currentUser?._id}&joinedUserId=${currentUser?._id}&status=completed&limit=1000`,
           accessToken || undefined
         ),
         apiClient.get(
@@ -81,7 +77,7 @@ export default function DashboardPage() {
       ]);
 
       // Extract data from successful responses
-      const [plansResult, completedResult, matchesResult, reviewableResult] =
+      const [plansResult, completedResult, completedCountResult, matchesResult, reviewableResult] =
         results;
 
       if (plansResult.status === "fulfilled") {
@@ -91,6 +87,12 @@ export default function DashboardPage() {
       if (completedResult.status === "fulfilled") {
         setCompletedPlans(
           (completedResult.value as ApiResponse<TravelPlan[]>).data
+        );
+      }
+
+      if (completedCountResult.status === "fulfilled") {
+        setCompletedCount(
+          (completedCountResult.value as ApiResponse<TravelPlan[]>).data.length
         );
       }
 
@@ -118,7 +120,16 @@ export default function DashboardPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentUser?._id, accessToken]);
+
+  useEffect(() => {
+    if (!currentUser) {
+      router.push("/login");
+      return;
+    }
+
+    fetchDashboardData();
+  }, [currentUser, router, fetchDashboardData]);
 
   if (loading) {
     return (
@@ -201,7 +212,9 @@ export default function DashboardPage() {
               <CheckCircle className='w-4 h-4 text-green-500' />
             </CardHeader>
             <CardContent>
-              <div className='text-2xl font-bold'>{completedPlans.length}</div>
+              <div className='text-2xl font-bold'>
+                {completedCount}
+              </div>
             </CardContent>
           </Card>
 
