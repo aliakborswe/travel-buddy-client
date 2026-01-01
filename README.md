@@ -10,7 +10,7 @@
 
 **Connect with like-minded travelers, plan amazing trips, and create unforgettable memories together.**
 
-[Live Demo](#) • [Documentation](#features) • [Report Bug](#) • [Request Feature](#)
+[Live Demo](https://travel-buddy-client-coral.vercel.app) • [Documentation](#features) • [Report Bug](#) • [Request Feature](#)
 
 </div>
 
@@ -53,6 +53,7 @@
 ### Core Features
 
 #### 🏠 **Home & Landing**
+
 - Beautiful, animated hero section with gradient backgrounds
 - Feature showcases with hover effects
 - Popular destinations display
@@ -61,6 +62,7 @@
 - Pricing plans comparison
 
 #### 🔐 **Authentication**
+
 - User registration with validation (Zod schema)
 - Secure login with JWT tokens
 - Password requirements (uppercase, lowercase, number, special char)
@@ -69,6 +71,7 @@
 - Test credentials provided for demo
 
 #### 👤 **User Profiles**
+
 - Create and edit detailed profiles
 - Upload profile images (Cloudinary integration)
 - Add travel interests and visited countries
@@ -78,6 +81,7 @@
 - Review system with star ratings
 
 #### ✈️ **Travel Plans**
+
 - Create detailed travel plans with:
   - Destination (country & city)
   - Date ranges (start & end)
@@ -92,6 +96,7 @@
 - Join other travelers' plans
 
 #### 🔍 **Search & Explore**
+
 - Advanced search with multiple filters:
   - Destination search
   - Date range filtering
@@ -102,6 +107,7 @@
 - Detailed plan preview cards
 
 #### 🤝 **Smart Matching**
+
 - AI-powered matching algorithm
 - Match score calculation based on:
   - Destination compatibility
@@ -113,6 +119,7 @@
 - Dedicated matching page
 
 #### 📊 **Dashboard**
+
 - Statistics overview:
   - Active plans count
   - Planning stage plans
@@ -125,6 +132,7 @@
 - Premium upgrade prompts
 
 #### ⭐ **Review System**
+
 - Leave reviews for travel companions
 - 5-star rating system
 - Written feedback
@@ -134,6 +142,7 @@
 - Edit and delete reviews
 
 #### 👑 **Premium Subscription**
+
 - Monthly ($9.99) and Yearly ($99.99) plans
 - Stripe payment integration
 - Features include:
@@ -147,6 +156,7 @@
 - Payment history
 
 #### 🛡️ **Admin Panel**
+
 - **User Management**:
   - View all users
   - Search by name/email
@@ -167,47 +177,47 @@
 
 ### Frontend
 
-| Technology | Description |
-|------------|-------------|
-| **Next.js 16** | React framework with App Router |
-| **React 19** | Latest React with Server Components |
-| **TypeScript** | Type-safe development |
-| **Tailwind CSS 4** | Utility-first CSS framework |
-| **Redux Toolkit** | State management |
-| **React Redux** | Redux bindings for React |
+| Technology         | Description                         |
+| ------------------ | ----------------------------------- |
+| **Next.js 16**     | React framework with App Router     |
+| **React 19**       | Latest React with Server Components |
+| **TypeScript**     | Type-safe development               |
+| **Tailwind CSS 4** | Utility-first CSS framework         |
+| **Redux Toolkit**  | State management                    |
+| **React Redux**    | Redux bindings for React            |
 
 ### UI Components
 
-| Library | Purpose |
-|---------|---------|
-| **Radix UI** | Accessible component primitives |
-| **Lucide React** | Beautiful icon set |
-| **Shadcn UI** | Re-usable component collection |
-| **cmdk** | Command menu component |
-| **date-fns** | Date utility library |
-| **React Day Picker** | Date picker component |
+| Library              | Purpose                         |
+| -------------------- | ------------------------------- |
+| **Radix UI**         | Accessible component primitives |
+| **Lucide React**     | Beautiful icon set              |
+| **Shadcn UI**        | Re-usable component collection  |
+| **cmdk**             | Command menu component          |
+| **date-fns**         | Date utility library            |
+| **React Day Picker** | Date picker component           |
 
 ### Forms & Validation
 
-| Tool | Use Case |
-|------|----------|
-| **Zod** | Schema validation |
+| Tool            | Use Case                         |
+| --------------- | -------------------------------- |
+| **Zod**         | Schema validation                |
 | **SweetAlert2** | Beautiful alerts & confirmations |
 
 ### Payment
 
-| Service | Integration |
-|---------|-------------|
-| **Stripe** | Payment processing |
-| **@stripe/stripe-js** | Stripe JavaScript SDK |
+| Service                     | Integration                 |
+| --------------------------- | --------------------------- |
+| **Stripe**                  | Payment processing          |
+| **@stripe/stripe-js**       | Stripe JavaScript SDK       |
 | **@stripe/react-stripe-js** | React components for Stripe |
 
 ### Development
 
-| Tool | Purpose |
-|------|---------|
-| **ESLint** | Code linting |
-| **PostCSS** | CSS processing |
+| Tool               | Purpose                      |
+| ------------------ | ---------------------------- |
+| **ESLint**         | Code linting                 |
+| **PostCSS**        | CSS processing               |
 | **tw-animate-css** | Tailwind animation utilities |
 
 ---
@@ -351,9 +361,9 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_xxxxxxxxxxxxx
 
 ### Variable Descriptions
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `NEXT_PUBLIC_API_URL` | Backend API base URL | Yes |
+| Variable                             | Description                    | Required          |
+| ------------------------------------ | ------------------------------ | ----------------- |
+| `NEXT_PUBLIC_API_URL`                | Backend API base URL           | Yes               |
 | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Stripe public key for payments | Yes (for premium) |
 
 ---
@@ -381,6 +391,7 @@ npm run type-check   # Run TypeScript compiler check
 ## 👥 User Roles
 
 ### 🧑 Regular User
+
 - Create and manage travel plans
 - Search and explore destinations
 - Match with travel buddies
@@ -390,7 +401,9 @@ npm run type-check   # Run TypeScript compiler check
 - Upgrade to premium
 
 ### 👑 Premium User
+
 All regular features plus:
+
 - Verified badge
 - Unlimited travel plans
 - Priority matching
@@ -399,7 +412,9 @@ All regular features plus:
 - Premium support
 
 ### 🛡️ Admin
+
 All user features plus:
+
 - Manage all users
 - Delete users
 - View user statistics
@@ -426,6 +441,7 @@ Password: asd123!A
 ### API Client
 
 The app uses a custom API client (`lib/api-client.ts`) with:
+
 - Automatic token management
 - Request/response interceptors
 - Error handling
@@ -480,14 +496,16 @@ GET /matching/suggested
 ### Stripe Setup
 
 1. **Get Stripe Keys**
+
    - Sign up at [stripe.com](https://stripe.com)
    - Get publishable key from dashboard
    - Add to `.env.local`
 
 2. **Payment Flow**
+
    ```
-   User selects plan → Create payment intent → 
-   Stripe checkout → Confirm payment → 
+   User selects plan → Create payment intent →
+   Stripe checkout → Confirm payment →
    Backend verifies → User gets premium
    ```
 
@@ -503,6 +521,7 @@ GET /matching/suggested
 ## 🎨 Features Breakdown
 
 ### Responsive Design
+
 - ✅ Mobile-first approach
 - ✅ Breakpoints: sm (640px), md (768px), lg (1024px), xl (1280px)
 - ✅ Touch-friendly interactions
@@ -510,6 +529,7 @@ GET /matching/suggested
 - ✅ Flexible grids and layouts
 
 ### Performance
+
 - ⚡ Next.js 16 App Router
 - ⚡ Server Components
 - ⚡ Automatic code splitting
@@ -517,6 +537,7 @@ GET /matching/suggested
 - ⚡ Font optimization (Geist)
 
 ### Accessibility
+
 - ♿ Semantic HTML
 - ♿ ARIA labels
 - ♿ Keyboard navigation
@@ -524,6 +545,7 @@ GET /matching/suggested
 - ♿ Color contrast compliance
 
 ### Security
+
 - 🔒 JWT authentication
 - 🔒 Password validation
 - 🔒 XSS protection
@@ -581,21 +603,27 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📸 Screenshots
 
 ### Home Page
+
 Beautiful landing page with hero section, features, and CTAs.
 
 ### Dashboard
+
 Comprehensive dashboard with statistics, upcoming plans, and matches.
 
 ### Travel Plans
+
 Create and manage detailed travel plans with all necessary information.
 
 ### Matching System
+
 Smart algorithm suggests compatible travel companions.
 
 ### Profile
+
 Detailed user profiles with reviews, interests, and travel history.
 
 ### Admin Panel
+
 Powerful admin interface for managing users and travel plans.
 
 ---
