@@ -31,6 +31,7 @@ import {
 import Image from "next/image";
 import { ReviewForm } from "@/components/reviews/ReviewForm";
 import { useToast } from "@/components/ui/use-toast";
+import { showDeleteConfirm } from "@/lib/sweetalert";
 
 export default function TravelPlanDetailsPage() {
   const params = useParams();
@@ -44,7 +45,7 @@ export default function TravelPlanDetailsPage() {
   const [participants, setParticipants] = useState<User[]>([]);
   const [existingReviews, setExistingReviews] = useState<any[]>([]);
 
-  console.log(existingReviews)
+  console.log(existingReviews);
 
   useEffect(() => {
     fetchPlan();
@@ -146,7 +147,8 @@ export default function TravelPlanDetailsPage() {
   };
 
   const handleDeleteReview = async (reviewId: string) => {
-    if (!confirm("Are you sure you want to delete this review?")) return;
+    const confirmed = await showDeleteConfirm("this review");
+    if (!confirmed) return;
 
     try {
       await apiClient.delete(

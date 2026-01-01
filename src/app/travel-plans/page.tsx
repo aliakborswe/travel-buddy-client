@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/use-toast";
+import { showDeleteConfirm } from "@/lib/sweetalert";
 import {
   MapPin,
   Calendar,
@@ -32,7 +33,7 @@ export default function TravelPlansPage() {
   const accessToken = useAppSelector((state) => state.auth.accessToken);
   const [plans, setPlans] = useState<TravelPlan[]>([]);
   const [loading, setLoading] = useState(true);
-  const { toast, Toaster } = useToast();
+  const { toast } = useToast();
 
   useEffect(() => {
     if (!currentUser) {
@@ -58,7 +59,8 @@ export default function TravelPlansPage() {
   };
 
   const deletePlan = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this travel plan?")) return;
+    const confirmed = await showDeleteConfirm("this travel plan");
+    if (!confirmed) return;
 
     try {
       await apiClient.delete(

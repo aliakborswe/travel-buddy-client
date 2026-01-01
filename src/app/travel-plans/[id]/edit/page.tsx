@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { X, Plus } from "lucide-react";
+import { showErrorAlert } from "@/lib/sweetalert";
 
 export default function EditTravelPlanPage() {
   const params = useParams();
@@ -124,7 +125,7 @@ export default function EditTravelPlanPage() {
       );
       router.push(`/travel-plans/${params.id}`);
     } catch {
-      alert("Failed to save changes. Please try again.");
+      showErrorAlert("Failed to save changes", "Please try again.");
     } finally {
       setSaving(false);
     }

@@ -18,6 +18,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Trash2, Search, CheckCircle } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { showDeleteConfirm } from "@/lib/sweetalert";
 
 export default function AdminUsersPage() {
   const router = useRouter();
@@ -67,7 +68,8 @@ export default function AdminUsersPage() {
   }, [searchQuery, users]);
 
   const deleteUser = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this user?")) return;
+    const confirmed = await showDeleteConfirm("this user");
+    if (!confirmed) return;
 
     try {
       await apiClient.delete(

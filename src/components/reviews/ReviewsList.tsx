@@ -3,7 +3,6 @@ import { apiClient } from "@/lib/api-client";
 import { API_ENDPOINTS } from "@/lib/constants";
 import type { Review, User, ApiResponse } from "@/lib/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useToast } from "@/components/ui/use-toast";
 import { Star } from "lucide-react";
 
 interface ReviewsListProps {
@@ -15,7 +14,6 @@ export default function ReviewsList({
   userId,
   title = "Reviews",
 }: ReviewsListProps) {
-  const { Toaster } = useToast();
   const [reviews, setReviews] = useState<Review[]>([]);
   const [avg, setAvg] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
@@ -124,7 +122,6 @@ export default function ReviewsList({
           })}
         </div>
       </CardContent>
-      <Toaster />
     </Card>
   );
 }

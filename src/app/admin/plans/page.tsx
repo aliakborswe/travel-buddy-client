@@ -17,6 +17,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
+import { showDeleteConfirm } from "@/lib/sweetalert";
 import {
   Select,
   SelectContent,
@@ -35,7 +36,7 @@ export default function AdminPlansPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [loading, setLoading] = useState(true);
-  const { toast, Toaster } = useToast();
+  const { toast } = useToast();
 
   useEffect(() => {
     if (!currentUser || currentUser.role !== "admin") {
@@ -84,7 +85,8 @@ export default function AdminPlansPage() {
   }, [searchQuery, statusFilter, plans]);
 
   const deletePlan = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this travel plan?")) return;
+    const confirmed = await showDeleteConfirm("this travel plan");
+    if (!confirmed) return;
 
     try {
       await apiClient.delete(

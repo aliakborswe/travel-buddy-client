@@ -38,7 +38,7 @@ export function ReviewForm({
   onSuccess,
 }: ReviewFormProps) {
   const accessToken = useAppSelector((state) => state.auth.accessToken);
-  const { toast, Toaster } = useToast();
+  const { toast } = useToast();
   const [open, setOpen] = useState(false);
   const [rating, setRating] = useState(existingRating || 0);
   const [hoveredRating, setHoveredRating] = useState(0);
@@ -174,7 +174,6 @@ export function ReviewForm({
           </DialogContent>
         </Dialog>
       )}
-      <Toaster />
     </>
   );
 }

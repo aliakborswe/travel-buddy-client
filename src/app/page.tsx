@@ -74,7 +74,7 @@ export default function Home() {
       </section>
 
       {/* Matching CTA */}
-      <section className='py-16 sm:py-20 bg-linear-to-br from-white to-blue-50/50'>
+      <section className='py-16 sm:py-20 bg-gradient-to-br from-white to-blue-50/50'>
         <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='mx-auto max-w-3xl text-center'>
             <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
@@ -371,7 +371,7 @@ export default function Home() {
                     /mo
                   </span>
                 </div>
-                <Link href='/premium'>
+                <Link href='/premium' className="relative">
                   <Button className='bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl'>
                     Upgrade
                   </Button>
