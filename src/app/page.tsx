@@ -24,16 +24,18 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className='min-h-screen bg-linear-to-b from-white to-gray-50'>
-      <section className='relative overflow-hidden bg-linear-to-r from-blue-600 to-blue-800 py-20 md:py-32'>
+    <div className='min-h-screen bg-gradient-to-b from-white via-blue-50/30 to-gray-50'>
+      <section className='relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 py-20 md:py-32'>
         <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='grid gap-12 lg:grid-cols-2 lg:gap-8'>
-            <div className='flex flex-col justify-center space-y-8'>
-              <h1 className='text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl'>
+            <div className='flex flex-col justify-center space-y-8 animate-[fadeIn_0.8s_ease-in]'>
+              <h1 className='text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl drop-shadow-lg'>
                 Find Your Perfect{" "}
-                <span className='text-yellow-300'>Travel Companion</span>
+                <span className='bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent'>
+                  Travel Companion
+                </span>
               </h1>
-              <p className='text-xl text-blue-100 md:text-2xl'>
+              <p className='text-xl text-blue-50/90 md:text-2xl drop-shadow-md'>
                 Connect with like-minded travelers, plan amazing trips, and
                 create unforgettable memories together.
               </p>
@@ -41,7 +43,7 @@ export default function Home() {
                 <Link href='/explore'>
                   <Button
                     size='lg'
-                    className='w-full sm:w-auto bg-white text-blue-600 hover:bg-gray-100'
+                    className='w-full sm:w-auto bg-white text-blue-600 hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl'
                   >
                     <Search className='mr-2 h-5 w-5' />
                     Find Travel Buddies
@@ -51,7 +53,7 @@ export default function Home() {
                   <Button
                     size='lg'
                     variant='outline'
-                    className='w-full sm:w-auto '
+                    className='w-full sm:w-auto border-white/30 bg-white/10 text-white hover:bg-white/20 hover:scale-105 transition-all duration-300 backdrop-blur-sm'
                   >
                     Get Started Free
                   </Button>
@@ -60,10 +62,10 @@ export default function Home() {
             </div>
             <div className='hidden lg:flex items-center justify-center'>
               <div className='relative h-96 w-96'>
-                <div className='absolute inset-0 rounded-full bg-white/10 backdrop-blur-sm' />
-                <div className='absolute inset-8 rounded-full bg-white/20 backdrop-blur-sm' />
-                <div className='absolute inset-16 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center'>
-                  <Plane className='h-32 w-32 text-white' />
+                <div className='absolute inset-0 rounded-full bg-white/10 backdrop-blur-sm animate-pulse' />
+                <div className='absolute inset-8 rounded-full bg-white/20 backdrop-blur-sm animate-[pulse_3s_ease-in-out_infinite]' />
+                <div className='absolute inset-16 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center animate-[pulse_4s_ease-in-out_infinite]'>
+                  <Plane className='h-32 w-32 text-white animate-[bounce_2s_ease-in-out_infinite]' />
                 </div>
               </div>
             </div>
@@ -72,7 +74,7 @@ export default function Home() {
       </section>
 
       {/* Matching CTA */}
-      <section className='py-16 sm:py-20 bg-white'>
+      <section className='py-16 sm:py-20 bg-linear-to-br from-white to-blue-50/50'>
         <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='mx-auto max-w-3xl text-center'>
             <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
@@ -84,12 +86,17 @@ export default function Home() {
           </div>
           <div className='mt-8 flex items-center justify-center gap-4'>
             <Link href='/travel-plans/add'>
-              <Button>
+              <Button className='hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl'>
                 <Plane className='mr-2 h-5 w-5' /> Create a Plan
               </Button>
             </Link>
             <Link href='/matching'>
-              <Button variant='outline'>Find a Buddy</Button>
+              <Button
+                variant='outline'
+                className='hover:scale-105 transition-transform duration-300 shadow-md hover:shadow-lg'
+              >
+                Find a Buddy
+              </Button>
             </Link>
           </div>
         </div>
@@ -107,7 +114,7 @@ export default function Home() {
             </p>
           </div>
           <div className='mt-12 grid gap-6 sm:grid-cols-2'>
-            <Card>
+            <Card className='hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-gray-200/50'>
               <CardHeader>
                 <CardTitle>Is TravelBuddy free?</CardTitle>
                 <CardDescription>
@@ -116,7 +123,7 @@ export default function Home() {
                 </CardDescription>
               </CardHeader>
             </Card>
-            <Card>
+            <Card className='hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-gray-200/50'>
               <CardHeader>
                 <CardTitle>How do matches work?</CardTitle>
                 <CardDescription>
@@ -139,7 +146,7 @@ export default function Home() {
             </p>
           </div>
           <div className='mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
-            <Card>
+            <Card className='hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-blue-100/50 hover:border-blue-300'>
               <CardHeader>
                 <CardTitle className='flex items-center gap-3'>
                   <Users className='h-6 w-6 text-blue-600' />
@@ -153,7 +160,7 @@ export default function Home() {
                 Build trust with a complete profile and get better matches.
               </CardContent>
             </Card>
-            <Card>
+            <Card className='hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-blue-100/50 hover:border-blue-300'>
               <CardHeader>
                 <CardTitle className='flex items-center gap-3'>
                   <Calendar className='h-6 w-6 text-blue-600' />
@@ -167,7 +174,7 @@ export default function Home() {
                 Get discovered by travelers with similar plans.
               </CardContent>
             </Card>
-            <Card>
+            <Card className='hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-blue-100/50 hover:border-blue-300'>
               <CardHeader>
                 <CardTitle className='flex items-center gap-3'>
                   <Globe className='h-6 w-6 text-blue-600' />
@@ -204,10 +211,13 @@ export default function Home() {
               "Cusco, Peru",
               "Cappadocia, Türkiye",
             ].map((d) => (
-              <Card key={d}>
+              <Card
+                key={d}
+                className='hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group cursor-pointer border-gray-200/50 bg-gradient-to-br from-white to-gray-50/50'
+              >
                 <CardHeader>
-                  <CardTitle className='flex items-center gap-2'>
-                    <MapPin className='h-5 w-5 text-red-500' />
+                  <CardTitle className='flex items-center gap-2 group-hover:text-blue-600 transition-colors'>
+                    <MapPin className='h-5 w-5 text-red-500 group-hover:scale-110 transition-transform' />
                     {d}
                   </CardTitle>
                   <CardDescription>
@@ -258,7 +268,10 @@ export default function Home() {
                 desc: "Meet friendly explorers worldwide.",
               },
             ].map((f) => (
-              <Card key={(f as any).title}>
+              <Card
+                key={(f as any).title}
+                className='hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-blue-100/50 hover:border-blue-300 bg-gradient-to-br from-white to-blue-50/20'
+              >
                 <CardHeader>
                   <CardTitle className='flex items-center gap-3'>
                     {(f as any).icon}
@@ -297,7 +310,10 @@ export default function Home() {
                 text: "Safe, simple, and super friendly people.",
               },
             ].map((t) => (
-              <Card key={t.name}>
+              <Card
+                key={t.name}
+                className='hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-yellow-200/50 bg-gradient-to-br from-white to-yellow-50/20'
+              >
                 <CardHeader>
                   <CardTitle className='flex items-center gap-2'>
                     <Star className='h-5 w-5 text-yellow-500' />
@@ -323,7 +339,7 @@ export default function Home() {
             </p>
           </div>
           <div className='mt-12 grid gap-6 sm:grid-cols-2'>
-            <Card>
+            <Card className='hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-gray-200/50 bg-gradient-to-br from-white to-gray-50'>
               <CardHeader>
                 <CardTitle>Free</CardTitle>
                 <CardDescription>
@@ -333,11 +349,13 @@ export default function Home() {
               <CardContent className='flex items-center justify-between'>
                 <div className='text-3xl font-bold'>$0</div>
                 <Link href='/register'>
-                  <Button>Get Started</Button>
+                  <Button className='hover:scale-105 transition-transform duration-300'>
+                    Get Started
+                  </Button>
                 </Link>
               </CardContent>
             </Card>
-            <Card className='border-blue-600'>
+            <Card className='border-blue-500 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-blue-600 bg-gradient-to-br from-blue-50/50 to-white relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-blue-500/10 before:to-transparent before:opacity-0 before:hover:opacity-100 before:transition-opacity'>
               <CardHeader>
                 <CardTitle className='flex items-center gap-2'>
                   Premium <TrendingUp className='h-5 w-5 text-blue-600' />
@@ -354,7 +372,7 @@ export default function Home() {
                   </span>
                 </div>
                 <Link href='/premium'>
-                  <Button className='bg-blue-600 hover:bg-blue-700'>
+                  <Button className='bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl'>
                     Upgrade
                   </Button>
                 </Link>
@@ -364,7 +382,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className='border-t bg-white'>
+      <footer className='border-t bg-gradient-to-r from-white to-blue-50/30'>
         <div className='container mx-auto px-4 sm:px-6 lg:px-8 py-10'>
           <div className='flex flex-col items-center justify-between gap-6 sm:flex-row'>
             <div className='flex items-center gap-2 text-gray-700'>
@@ -372,10 +390,30 @@ export default function Home() {
               TravelBuddy
             </div>
             <div className='flex items-center gap-6 text-sm text-gray-600'>
-              <Link href='/explore'>Explore</Link>
-              <Link href='/travel-plans/add'>Create Plan</Link>
-              <Link href='/login'>Login</Link>
-              <Link href='/register'>Register</Link>
+              <Link
+                href='/explore'
+                className='hover:text-blue-600 transition-colors duration-200 hover:scale-105 inline-block'
+              >
+                Explore
+              </Link>
+              <Link
+                href='/travel-plans/add'
+                className='hover:text-blue-600 transition-colors duration-200 hover:scale-105 inline-block'
+              >
+                Create Plan
+              </Link>
+              <Link
+                href='/login'
+                className='hover:text-blue-600 transition-colors duration-200 hover:scale-105 inline-block'
+              >
+                Login
+              </Link>
+              <Link
+                href='/register'
+                className='hover:text-blue-600 transition-colors duration-200 hover:scale-105 inline-block'
+              >
+                Register
+              </Link>
             </div>
           </div>
         </div>
