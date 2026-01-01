@@ -24,14 +24,14 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className='min-h-screen bg-gradient-to-b from-white via-blue-50/30 to-gray-50'>
-      <section className='relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 py-20 md:py-32'>
+    <div className='min-h-screen bg-linear-to-b from-white via-blue-50/30 to-gray-50'>
+      <section className='relative overflow-hidden bg-linear-to-br from-blue-600 via-blue-700 to-indigo-800 py-20 md:py-32'>
         <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='grid gap-12 lg:grid-cols-2 lg:gap-8'>
             <div className='flex flex-col justify-center space-y-8 animate-[fadeIn_0.8s_ease-in]'>
               <h1 className='text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl drop-shadow-lg'>
                 Find Your Perfect{" "}
-                <span className='bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent'>
+                <span className='bg-linear-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent'>
                   Travel Companion
                 </span>
               </h1>
@@ -74,7 +74,7 @@ export default function Home() {
       </section>
 
       {/* Matching CTA */}
-      <section className='py-16 sm:py-20 bg-gradient-to-br from-white to-blue-50/50'>
+      <section className='py-16 sm:py-20 bg-linear-to-br from-white to-blue-50/50'>
         <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='mx-auto max-w-3xl text-center'>
             <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
@@ -213,7 +213,7 @@ export default function Home() {
             ].map((d) => (
               <Card
                 key={d}
-                className='hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group cursor-pointer border-gray-200/50 bg-gradient-to-br from-white to-gray-50/50'
+                className='hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group cursor-pointer border-gray-200/50 bg-linear-to-br from-white to-gray-50/50'
               >
                 <CardHeader>
                   <CardTitle className='flex items-center gap-2 group-hover:text-blue-600 transition-colors'>
@@ -270,7 +270,7 @@ export default function Home() {
             ].map((f) => (
               <Card
                 key={(f as any).title}
-                className='hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-blue-100/50 hover:border-blue-300 bg-gradient-to-br from-white to-blue-50/20'
+                className='hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-blue-100/50 hover:border-blue-300 bg-linear-to-br from-white to-blue-50/20'
               >
                 <CardHeader>
                   <CardTitle className='flex items-center gap-3'>
@@ -312,7 +312,7 @@ export default function Home() {
             ].map((t) => (
               <Card
                 key={t.name}
-                className='hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-yellow-200/50 bg-gradient-to-br from-white to-yellow-50/20'
+                className='hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-yellow-200/50 bg-linear-to-br from-white to-yellow-50/20'
               >
                 <CardHeader>
                   <CardTitle className='flex items-center gap-2'>
@@ -339,7 +339,7 @@ export default function Home() {
             </p>
           </div>
           <div className='mt-12 grid gap-6 sm:grid-cols-2'>
-            <Card className='hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-gray-200/50 bg-gradient-to-br from-white to-gray-50'>
+            <Card className='hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-gray-200/50 bg-linear-to-br from-white to-gray-50'>
               <CardHeader>
                 <CardTitle>Free</CardTitle>
                 <CardDescription>
@@ -355,7 +355,7 @@ export default function Home() {
                 </Link>
               </CardContent>
             </Card>
-            <Card className='border-blue-500 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-blue-600 bg-gradient-to-br from-blue-50/50 to-white relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-blue-500/10 before:to-transparent before:opacity-0 before:hover:opacity-100 before:transition-opacity'>
+            <Card className='border-blue-500 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-blue-600 bg-linear-to-br from-blue-50/50 to-white relative overflow-hidden before:absolute before:inset-0 before:bg-linear-to-r before:from-blue-500/10 before:to-transparent before:opacity-0 before:hover:opacity-100 before:transition-opacity'>
               <CardHeader>
                 <CardTitle className='flex items-center gap-2'>
                   Premium <TrendingUp className='h-5 w-5 text-blue-600' />
@@ -371,8 +371,8 @@ export default function Home() {
                     /mo
                   </span>
                 </div>
-                <Link href='/premium' className="relative">
-                  <Button className='bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl'>
+                <Link href='/premium' className='relative'>
+                  <Button className='bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl'>
                     Upgrade
                   </Button>
                 </Link>
@@ -382,13 +382,13 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className='border-t bg-gradient-to-r from-white to-blue-50/30'>
+      <footer className='border-t bg-linear-to-r from-white to-blue-50/30'>
         <div className='container mx-auto px-4 sm:px-6 lg:px-8 py-10'>
           <div className='flex flex-col items-center justify-between gap-6 sm:flex-row'>
-            <div className='flex items-center gap-2 text-gray-700'>
+            <Link href='/' className='flex items-center gap-2 text-gray-700'>
               <Globe className='h-5 w-5 text-blue-600' />
               TravelBuddy
-            </div>
+            </Link>
             <div className='flex items-center gap-6 text-sm text-gray-600'>
               <Link
                 href='/explore'

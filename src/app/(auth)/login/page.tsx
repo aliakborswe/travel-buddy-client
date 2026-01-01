@@ -168,7 +168,7 @@ export default function LoginPage() {
                   🔐 Test User Credentials
                 </p>
               </div>
-              <div className='bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-3 space-y-2'>
+              <div className='bg-linear-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-3 space-y-2'>
                 <div className='flex items-center justify-between text-xs'>
                   <span className='font-medium text-gray-600'>Admin:</span>
                   <div className='text-right'>
@@ -177,7 +177,7 @@ export default function LoginPage() {
                   </div>
                 </div>
               </div>
-              <div className='bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-lg p-3 space-y-2'>
+              <div className='bg-linear-to-br from-green-50 to-emerald-50 border border-green-200 rounded-lg p-3 space-y-2'>
                 <div className='flex items-center justify-between text-xs'>
                   <span className='font-medium text-gray-600'>User:</span>
                   <div className='text-right'>
