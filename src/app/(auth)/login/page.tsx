@@ -18,6 +18,30 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Plane } from "lucide-react";
+import { z } from "zod";
+
+const loginSchema = z.object({
+  email: z.string().min(1, "Email is required").email("Invalid email address"),
+   password: z
+    .string()
+    .min(6, { message: "Password must be at least 6 characters." })
+    .refine(
+      (value) => /[A-Z]/.test(value), // Must have at least one uppercase letter
+      { message: "Password must contain at least one uppercase letter." }
+    )
+    .refine(
+      (value) => /[a-z]/.test(value), // Must have at least one lowercase letter
+      { message: "Password must contain at least one lowercase letter." }
+    )
+    .refine(
+      (value) => /[0-9]/.test(value), // Must have at least one number
+      { message: "Password must contain at least one number." }
+    )
+    .refine(
+      (value) => /[!@#$%^&*(),.?":{}|<>]/.test(value), // Must have at least one special character
+      { message: "Password must contain at least one special character." }
+    ),
+});
 
 export default function LoginPage() {
   const router = useRouter();
@@ -29,13 +53,33 @@ export default function LoginPage() {
     password: "",
   });
 
+  const [validationErrors, setValidationErrors] = useState<{
+    email?: string;
+    password?: string;
+  }>({});
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(clearError());
+    setValidationErrors({});
 
-    const result = await dispatch(login(formData));
+    // Validate with Zod
+    const result = loginSchema.safeParse(formData);
 
-    if (login.fulfilled.match(result)) {
+    if (!result.success) {
+      const errors: { email?: string; password?: string } = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0]) {
+          errors[err.path[0] as "email" | "password"] = err.message;
+        }
+      });
+      setValidationErrors(errors);
+      return;
+    }
+
+    const loginResult = await dispatch(login(formData));
+
+    if (login.fulfilled.match(loginResult)) {
       router.push("/");
     }
   };
@@ -75,8 +119,11 @@ export default function LoginPage() {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                required
+                className={validationErrors.email ? "border-red-500" : ""}
               />
+              {validationErrors.email && (
+                <p className='text-sm text-red-600'>{validationErrors.email}</p>
+              )}
             </div>
 
             <div className='space-y-2'>
@@ -89,12 +136,17 @@ export default function LoginPage() {
                 onChange={(e) =>
                   setFormData({ ...formData, password: e.target.value })
                 }
-                required
+                className={validationErrors.password ? "border-red-500" : ""}
               />
+              {validationErrors.password && (
+                <p className='text-sm text-red-600'>
+                  {validationErrors.password}
+                </p>
+              )}
             </div>
           </CardContent>
 
-          <CardFooter className='flex flex-col space-y-4'>
+          <CardFooter className='flex flex-col space-y-4 pt-4'>
             <Button type='submit' className='w-full' disabled={loading}>
               {loading ? "Logging in..." : "Login"}
             </Button>

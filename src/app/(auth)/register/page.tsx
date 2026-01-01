@@ -18,6 +18,39 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Plane } from "lucide-react";
+import z from "zod";
+
+const registerSchema = z
+  .object({
+    fullName: z
+      .string()
+      .min(1, "Full name is required")
+      .min(2, "Full name must be at least 2 characters"),
+    email: z
+      .string()
+      .min(1, "Email is required")
+      .email("Invalid email address"),
+    password: z
+      .string()
+      .min(6, { message: "Password must be at least 6 characters" })
+      .refine((value) => /[A-Z]/.test(value), {
+        message: "Password must contain at least one uppercase letter",
+      })
+      .refine((value) => /[a-z]/.test(value), {
+        message: "Password must contain at least one lowercase letter",
+      })
+      .refine((value) => /[0-9]/.test(value), {
+        message: "Password must contain at least one number",
+      })
+      .refine((value) => /[!@#$%^&*(),.?":{}|<>]/.test(value), {
+        message: "Password must contain at least one special character",
+      }),
+    confirmPassword: z.string().min(1, "Please confirm your password"),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -31,24 +64,38 @@ export default function RegisterPage() {
     confirmPassword: "",
   });
 
-  const [localError, setLocalError] = useState("");
+  const [validationErrors, setValidationErrors] = useState<{
+    fullName?: string;
+    email?: string;
+    password?: string;
+    confirmPassword?: string;
+  }>({});
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(clearError());
-    setLocalError("");
+    setValidationErrors({});
 
-    if (formData.password !== formData.confirmPassword) {
-      setLocalError("Passwords do not match");
+    // Validate with Zod
+    const result = registerSchema.safeParse(formData);
+
+    if (!result.success) {
+      const errors: {
+        fullName?: string;
+        email?: string;
+        password?: string;
+        confirmPassword?: string;
+      } = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0]) {
+          errors[err.path[0] as keyof typeof errors] = err.message;
+        }
+      });
+      setValidationErrors(errors);
       return;
     }
 
-    if (formData.password.length < 6) {
-      setLocalError("Password must be at least 6 characters");
-      return;
-    }
-
-    const result = await dispatch(
+    const registerResult = await dispatch(
       register({
         email: formData.email,
         password: formData.password,
@@ -56,7 +103,7 @@ export default function RegisterPage() {
       })
     );
 
-    if (register.fulfilled.match(result)) {
+    if (register.fulfilled.match(registerResult)) {
       router.push("/");
     }
   };
@@ -80,9 +127,9 @@ export default function RegisterPage() {
         </CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className='space-y-4'>
-            {(error || localError) && (
+            {error && (
               <div className='p-3 bg-red-50 border border-red-200 rounded-md'>
-                <p className='text-sm text-red-600'>{error || localError}</p>
+                <p className='text-sm text-red-600'>{error}</p>
               </div>
             )}
 
@@ -96,8 +143,13 @@ export default function RegisterPage() {
                 onChange={(e) =>
                   setFormData({ ...formData, fullName: e.target.value })
                 }
-                required
+                className={validationErrors.fullName ? "border-red-500" : ""}
               />
+              {validationErrors.fullName && (
+                <p className='text-sm text-red-600'>
+                  {validationErrors.fullName}
+                </p>
+              )}
             </div>
 
             <div className='space-y-2'>
@@ -110,8 +162,11 @@ export default function RegisterPage() {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                required
+                className={validationErrors.email ? "border-red-500" : ""}
               />
+              {validationErrors.email && (
+                <p className='text-sm text-red-600'>{validationErrors.email}</p>
+              )}
             </div>
 
             <div className='space-y-2'>
@@ -124,8 +179,13 @@ export default function RegisterPage() {
                 onChange={(e) =>
                   setFormData({ ...formData, password: e.target.value })
                 }
-                required
+                className={validationErrors.password ? "border-red-500" : ""}
               />
+              {validationErrors.password && (
+                <p className='text-sm text-red-600'>
+                  {validationErrors.password}
+                </p>
+              )}
             </div>
 
             <div className='space-y-2'>
@@ -138,12 +198,19 @@ export default function RegisterPage() {
                 onChange={(e) =>
                   setFormData({ ...formData, confirmPassword: e.target.value })
                 }
-                required
+                className={
+                  validationErrors.confirmPassword ? "border-red-500" : ""
+                }
               />
+              {validationErrors.confirmPassword && (
+                <p className='text-sm text-red-600'>
+                  {validationErrors.confirmPassword}
+                </p>
+              )}
             </div>
           </CardContent>
 
-          <CardFooter className='flex flex-col space-y-4'>
+          <CardFooter className='flex flex-col space-y-4 pt-4'>
             <Button type='submit' className='w-full' disabled={loading}>
               {loading ? "Creating account..." : "Sign Up"}
             </Button>
