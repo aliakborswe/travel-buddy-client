@@ -22,7 +22,7 @@ import { z } from "zod";
 
 const loginSchema = z.object({
   email: z.string().min(1, "Email is required").email("Invalid email address"),
-   password: z
+  password: z
     .string()
     .min(6, { message: "Password must be at least 6 characters." })
     .refine(
@@ -160,6 +160,35 @@ export default function LoginPage() {
                 Sign up
               </Link>
             </p>
+
+            {/* user credentials */}
+            <div className='space-y-3 pt-2 w-full border-t border-gray-200'>
+              <div>
+                <p className='text-xs font-semibold text-gray-700 mb-2'>
+                  🔐 Test User Credentials
+                </p>
+              </div>
+              <div className='bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-3 space-y-2'>
+                <div className='flex items-center justify-between text-xs'>
+                  <span className='font-medium text-gray-600'>Admin:</span>
+                  <div className='text-right'>
+                    <p className='text-gray-800 font-mono'>admin@gmail.com</p>
+                    <p className='text-gray-800 font-mono'>asd123!A</p>
+                  </div>
+                </div>
+              </div>
+              <div className='bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-lg p-3 space-y-2'>
+                <div className='flex items-center justify-between text-xs'>
+                  <span className='font-medium text-gray-600'>User:</span>
+                  <div className='text-right'>
+                    <p className='text-gray-800 font-mono'>
+                      aliakbor@gmail.com
+                    </p>
+                    <p className='text-gray-800 font-mono'>asd123!A</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </CardFooter>
         </form>
       </Card>
