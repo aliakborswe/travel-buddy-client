@@ -8,6 +8,7 @@ import { logout } from "@/lib/redux/slices/authSlice";
 import { Button } from "@/components/ui/button";
 import { Plane, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { ModeToggle } from "./ModeToggle";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -56,6 +57,7 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className='hidden md:flex md:items-center md:space-x-6'>
+            <ModeToggle />
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -102,6 +104,7 @@ export default function Navbar() {
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <div className='md:hidden py-4 space-y-3'>
+            <ModeToggle />
             {navLinks.map((link) => (
               <Link
                 key={link.href}
