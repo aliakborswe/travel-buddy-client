@@ -1,3 +1,5 @@
+import { FAQSection } from "@/components/faq/FAQSection";
+
 export default function AboutPage() {
   return (
     <div className='min-h-screen bg-linear-to-b from-white to-gray-50 py-12'>
@@ -47,6 +49,7 @@ export default function AboutPage() {
           Have questions? Reach us at support@travelbuddy.app
         </p>
       </div>
+      <FAQSection />
     </div>
   );
 }

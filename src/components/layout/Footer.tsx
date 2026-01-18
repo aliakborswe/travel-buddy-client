@@ -1,4 +1,4 @@
-import { Globe, Linkedin } from "lucide-react";
+import { Facebook, Github, Globe, Linkedin } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className='border-t border-border py-12'>
       <div className='container mx-auto px-4'>
         <div className='grid gap-8 md:grid-cols-4'>
-          <div>
+          <div className='space-y-4'>
             <Link href='/' className='flex items-center gap-2 text-gray-700'>
               <Globe className='h-5 w-5 text-blue-600' />
               TravelBuddy
@@ -44,7 +44,7 @@ const Footer = () => {
             <h4 className='mb-4 font-semibold'>Support</h4>
             <ul className='space-y-2 text-sm text-muted-foreground'>
               <li>
-                <Link href='#faq' className='hover:text-foreground'>
+                <Link href='/about#faq' className='hover:text-foreground'>
                   FAQ
                 </Link>
               </li>
@@ -83,12 +83,28 @@ const Footer = () => {
           {/* social media links */}
           <div className='space-x-4 flex'>
             <Link
+              href='https://github.com/aliakborswe'
+              className='hover:text-foreground flex items-center'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <Github className='h-5 w-5' />
+            </Link>
+            <Link
               href='https://linkedin.com/aliakborswe/'
               className='hover:text-foreground flex items-center'
               target='_blank'
               rel='noopener noreferrer'
             >
               <Linkedin className='h-5 w-5' />
+            </Link>
+            <Link
+              href='https://facebook.com/aliakborse/'
+              className='hover:text-foreground flex items-center'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <Facebook className='h-5 w-5' />
             </Link>
           </div>
         </div>

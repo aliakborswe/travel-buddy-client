@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import PlaneLogo from "@/components/PlaneLogo";
+import { FAQSection } from "@/components/faq/FAQSection";
 
 export default function Home() {
   return (
@@ -99,39 +100,6 @@ export default function Home() {
                 Find a Buddy
               </Button>
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQs */}
-      <section id='faq' className='py-16 sm:py-20'>
-        <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='mx-auto max-w-3xl text-center'>
-            <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
-              Frequently Asked Questions
-            </h2>
-            <p className='mt-3 text-lg text-gray-600'>
-              Quick answers to common questions.
-            </p>
-          </div>
-          <div className='mt-12 grid gap-6 sm:grid-cols-2'>
-            <Card className='hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-gray-200/50'>
-              <CardHeader>
-                <CardTitle>Is TravelBuddy free?</CardTitle>
-                <CardDescription>
-                  Yes! You can browse and create plans for free. Premium unlocks
-                  extras.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card className='hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-gray-200/50'>
-              <CardHeader>
-                <CardTitle>How do matches work?</CardTitle>
-                <CardDescription>
-                  We match based on destination, dates, budget, and interests.
-                </CardDescription>
-              </CardHeader>
-            </Card>
           </div>
         </div>
       </section>
