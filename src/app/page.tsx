@@ -104,7 +104,7 @@ export default function Home() {
       </section>
 
       {/* FAQs */}
-      <section className='py-16 sm:py-20'>
+      <section id='faq' className='py-16 sm:py-20'>
         <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='mx-auto max-w-3xl text-center'>
             <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
@@ -382,43 +382,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <footer className='border-t bg-linear-to-r from-white to-blue-50/30'>
-        <div className='container mx-auto px-4 sm:px-6 lg:px-8 py-10'>
-          <div className='flex flex-col items-center justify-between gap-6 sm:flex-row'>
-            <Link href='/' className='flex items-center gap-2 text-gray-700'>
-              <Globe className='h-5 w-5 text-blue-600' />
-              TravelBuddy
-            </Link>
-            <div className='flex items-center gap-6 text-sm text-gray-600'>
-              <Link
-                href='/explore'
-                className='hover:text-blue-600 transition-colors duration-200 hover:scale-105 inline-block'
-              >
-                Explore
-              </Link>
-              <Link
-                href='/travel-plans/add'
-                className='hover:text-blue-600 transition-colors duration-200 hover:scale-105 inline-block'
-              >
-                Create Plan
-              </Link>
-              <Link
-                href='/login'
-                className='hover:text-blue-600 transition-colors duration-200 hover:scale-105 inline-block'
-              >
-                Login
-              </Link>
-              <Link
-                href='/register'
-                className='hover:text-blue-600 transition-colors duration-200 hover:scale-105 inline-block'
-              >
-                Register
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

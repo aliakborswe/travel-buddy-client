@@ -13,7 +13,7 @@ import { ModeToggle } from "./ModeToggle";
 export default function Navbar() {
   const pathname = usePathname();
   const { isAuthenticated, user } = useAppSelector(
-    (state: RootState) => state.auth
+    (state: RootState) => state.auth,
   );
   const dispatch = useAppDispatch();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -22,6 +22,10 @@ export default function Navbar() {
     dispatch(logout());
   };
 
+  const commonLinks = [
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
+  ];
   const navLinks = isAuthenticated
     ? user?.role === "admin"
       ? [
@@ -30,6 +34,7 @@ export default function Navbar() {
           { href: "/admin/users", label: "Manage Users" },
           { href: "/admin/plans", label: "Manage Plans" },
           { href: `/profile/${user._id}`, label: "Profile" },
+          ...commonLinks,
         ]
       : [
           { href: "/", label: "Home" },
@@ -38,11 +43,12 @@ export default function Navbar() {
           { href: "/matching", label: "Find Buddy" },
           { href: "/travel-plans", label: "My Plans" },
           { href: `/profile/${user?._id}`, label: "Profile" },
+          ...commonLinks,
         ]
     : [
         { href: "/", label: "Home" },
         { href: "/explore", label: "Explore" },
-        { href: "/about", label: "About" },
+        ...commonLinks,
       ];
 
   return (
