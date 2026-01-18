@@ -168,26 +168,32 @@ export default function LoginPage() {
                   🔐 Test User Credentials
                 </p>
               </div>
-              <div className='bg-linear-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-3 space-y-2'>
-                <div className='flex items-center justify-between text-xs'>
-                  <span className='font-medium text-gray-600'>Admin:</span>
-                  <div className='text-right'>
-                    <p className='text-gray-800 font-mono'>admin@gmail.com</p>
-                    <p className='text-gray-800 font-mono'>asd123!A</p>
-                  </div>
-                </div>
-              </div>
-              <div className='bg-linear-to-br from-green-50 to-emerald-50 border border-green-200 rounded-lg p-3 space-y-2'>
-                <div className='flex items-center justify-between text-xs'>
-                  <span className='font-medium text-gray-600'>User:</span>
-                  <div className='text-right'>
-                    <p className='text-gray-800 font-mono'>
-                      aliakbor@gmail.com
-                    </p>
-                    <p className='text-gray-800 font-mono'>asd123!A</p>
-                  </div>
-                </div>
-              </div>
+              <Button
+                variant='default'
+                size='sm'
+                onClick={() =>
+                  setFormData({
+                    email: "admin@gmail.com",
+                    password: "asd123!A",
+                  })
+                }
+                className='w-full'
+              >
+                Admin Login
+              </Button>
+              <Button
+                variant='secondary'
+                size='sm'
+                onClick={() =>
+                  setFormData({
+                    email: "aliakbor.js@gmail.com",
+                    password: "asd123!A",
+                  })
+                }
+                className='w-full'
+              >
+                User Login
+              </Button>
             </div>
           </CardFooter>
         </form>

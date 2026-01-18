@@ -21,6 +21,7 @@ import {
   Users,
 } from "lucide-react";
 import Link from "next/link";
+import PlaneLogo from "@/components/PlaneLogo";
 
 export default function Home() {
   return (
@@ -62,10 +63,10 @@ export default function Home() {
             </div>
             <div className='hidden lg:flex items-center justify-center'>
               <div className='relative h-96 w-96'>
-                <div className='absolute inset-0 rounded-full bg-white/10 backdrop-blur-sm animate-pulse' />
-                <div className='absolute inset-8 rounded-full bg-white/20 backdrop-blur-sm animate-[pulse_3s_ease-in-out_infinite]' />
-                <div className='absolute inset-16 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center animate-[pulse_4s_ease-in-out_infinite]'>
-                  <Plane className='h-32 w-32 text-white animate-[bounce_2s_ease-in-out_infinite]' />
+                <div className='absolute inset-0 rounded-full bg-white/30 backdrop-blur-sm animate-pulse' />
+                <div className='absolute inset-8 rounded-full bg-white/40 backdrop-blur-sm animate-[pulse_3s_ease-in-out_infinite]' />
+                <div className='absolute inset-16 rounded-full bg-white/50 backdrop-blur-sm flex items-center justify-center animate-[pulse_4s_ease-in-out_infinite]'>
+                  <PlaneLogo />
                 </div>
               </div>
             </div>
